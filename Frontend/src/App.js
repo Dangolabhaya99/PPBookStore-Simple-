@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
 import './App.css';
+import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
 import HomeComponent from './PP BookStore/Home/HomeComponent';
 import Navbar from './PP BookStore/Navbar/NavComponent';
 import LoginComponent from './PP BookStore/Login/LoginComponen';
@@ -13,16 +13,17 @@ import PublicationComponent from './PP BookStore/Publication/Publicationcomponen
 import AddBookComponent from './PP BookStore/AddBooks/AddBookComponent';
 import ProtectedRoute from "./ProtectedRoutes/protectedRoute";
 import ViewBooksComponent from './PP BookStore/ViewBooks/ViewBooksComponent';
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const App = () => {
   return (
-    <>
+
+    <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
     <Router>
       <Navbar/>
     <Routes>
     <Route path='/' element={<HomeComponent/>}/>
     <Route path='/about' element={<AboutComponent/>}/>
-
     <Route path='/cart' element={<AddToCartPage/>}/>
     <Route path='/publication' element={<PublicationComponent/>}/>
     <Route path='/addbook' element={<AddBookComponent/>}/>
@@ -31,6 +32,7 @@ const App = () => {
     <Route path='/profile' element={<ProfilePage/>}/>
     <Route path='/login' element={<LoginComponent/>}/>
     <Route path='/signup' element={<SignUpCompoenet/>}/>
+    
               <Route 
               path="/viewbooks" 
               element={
@@ -68,8 +70,7 @@ const App = () => {
             />
     </Routes>
     </Router>
-
-    </>
+    </GoogleOAuthProvider>
   );
 };
 
